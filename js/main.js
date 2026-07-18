@@ -5,26 +5,79 @@ gsap.registerPlugin(ScrollTrigger);
 const reduce = window.matchMedia('(prefers-reduced-motion:reduce)').matches;
 const isTouch = window.matchMedia('(hover:none)').matches;
 
-/* ---------- PRELOADER ---------- */
+/* ---------- PRELOADER / INTERACTIVE ENTRY GATE ---------- */
 (function loader(){
-  const el = document.getElementById('loader');
-  const fill = document.getElementById('loaderFill');
-  const num = document.getElementById('loaderNum');
-  let p = 0;
-  const tick = setInterval(()=>{
-    p += Math.random()*16;
-    if(p>=100){p=100;clearInterval(tick);done();}
-    fill.style.width = p+'%';
-    num.textContent = Math.floor(p);
-  },140);
-  function done(){
-    setTimeout(()=>{
-      el.classList.add('done');
-      document.body.classList.add('loaded');
-      startHero();
-      setTimeout(()=>el.remove(),1100);
-    },350);
+  const el   = document.getElementById('loader');
+  const bar  = document.getElementById('loaderFill');
+  const mask = document.getElementById('loaderFillMask');
+  const num  = document.getElementById('loaderNum');
+  const step = document.getElementById('loaderStep');
+  const status = document.getElementById('loaderStatus');
+  const glow = document.getElementById('loaderGlow');
+  const enterBtn = document.getElementById('enterBtn');
+  const enterWrap = document.getElementById('enterWrap');
+  document.body.classList.add('loading');
+
+  const phases = [
+    [0,  'Iniciando la sesión…'],
+    [22, 'Afilando las <b>cuchillas</b>…'],
+    [46, 'Preparando la <b>silla</b>…'],
+    [70, 'Cargando el <b>feed</b>…'],
+    [90, 'Casi listo. <b>Winning season</b>.']
+  ];
+  let phaseIdx = -1;
+  function setPhase(p){
+    let i=0; for(let k=0;k<phases.length;k++){if(p>=phases[k][0])i=k;}
+    if(i!==phaseIdx){phaseIdx=i;status.innerHTML=phases[i][1];}
   }
+
+  let p=0, entered=false, ready=false;
+  const tick=setInterval(()=>{
+    p += Math.random()*7 + 2;
+    if(p>=100){p=100;clearInterval(tick);}
+    const v=Math.floor(p);
+    bar.style.width=p+'%';
+    mask.style.clipPath='inset(0 '+(100-p)+'% 0 0)';
+    num.textContent=v<10?'0'+v:v;
+    setPhase(p);
+    if(p>=100)openGate();
+  },95);
+
+  // cursor-follow glow
+  if(!isTouch){
+    el.addEventListener('mousemove',e=>{
+      el.style.setProperty('--gx',e.clientX+'px');
+      el.style.setProperty('--gy',e.clientY+'px');
+    });
+  }
+
+  function openGate(){
+    if(ready)return; ready=true;
+    step.textContent='LISTO';
+    status.innerHTML='Tu silla te espera.';
+    setTimeout(()=>{
+      el.classList.add('gate');
+      enterWrap.classList.add('show');
+    },500);
+  }
+
+  function enter(){
+    if(entered||!ready)return; entered=true;
+    enterWrap.classList.remove('show');
+    el.classList.add('done');
+    document.body.classList.remove('loading');
+    document.body.classList.add('loaded');
+    if(window.__startBeat) window.__startBeat();       // start music on user gesture
+    const hv=document.getElementById('heroVideo'); if(hv) hv.play().catch(()=>{});
+    startHero();
+    ScrollTrigger.refresh();
+    setTimeout(()=>el.remove(),1200);
+  }
+
+  enterBtn.addEventListener('click',enter);
+  window.addEventListener('keydown',e=>{
+    if(ready && !entered && (e.key==='Enter'||e.key===' ')){e.preventDefault();enter();}
+  });
 })();
 
 /* ---------- HERO INTRO ---------- */
@@ -193,10 +246,8 @@ gsap.utils.toArray('.stat__num').forEach(el=>{
   }
   function stop(){fade(0,()=>{a.pause();});on=false;btn.classList.remove('playing');}
   btn.addEventListener('click',()=>on?stop():play());
-  // try to start on first user interaction (autoplay policy friendly)
-  const kick=()=>{if(!on)play();window.removeEventListener('pointerdown',kick);window.removeEventListener('keydown',kick);};
-  window.addEventListener('pointerdown',kick);
-  window.addEventListener('keydown',kick);
+  // the entry gate (ENTRAR) triggers this on the user's first gesture
+  window.__startBeat=()=>{if(!on)play();};
   // pause when tab hidden
   document.addEventListener('visibilitychange',()=>{if(document.hidden&&on)a.pause();else if(!document.hidden&&on)a.play();});
 })();

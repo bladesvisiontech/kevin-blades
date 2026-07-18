@@ -15,10 +15,51 @@
 
 <!-- ================= PRELOADER ================= -->
 <div class="loader" id="loader">
-  <div class="loader__inner">
-    <img class="loader__logo" src="media/img/logo-kb.png" alt="Kevin Blades" />
-    <div class="loader__bar"><span id="loaderFill"></span></div>
+  <div class="loader__glow" id="loaderGlow"></div>
+  <div class="loader__noise"></div>
+  <div class="loader__scan"></div>
+
+  <div class="loader__top">
+    <span class="loader__tag"><span class="loader__blip"></span> KEVIN BLADES — BARBERSHOP</span>
+    <span class="loader__tag">HOUSTON, TX · 77053</span>
+  </div>
+
+  <div class="loader__center">
+    <div class="loader__wordmark" id="loaderWord" aria-label="Kevin Blades">
+      <span class="loader__word">KEVIN</span>
+      <span class="loader__word">BLADES</span>
+      <span class="loader__fillmask" id="loaderFillMask" aria-hidden="true">
+        <span class="loader__word">KEVIN</span>
+        <span class="loader__word">BLADES</span>
+      </span>
+    </div>
+    <div class="loader__status" id="loaderStatus">Iniciando la sesión…</div>
+  </div>
+
+  <div class="loader__bottom">
+    <div class="loader__meta">
+      <span id="loaderStep">CARGANDO</span>
+      <div class="loader__bar"><span id="loaderFill"></span></div>
+    </div>
     <div class="loader__count"><span id="loaderNum">0</span><i>%</i></div>
+  </div>
+
+  <!-- interactive enter gate -->
+  <div class="enter-wrap" id="enterWrap">
+    <button class="enter" id="enterBtn" aria-label="Entrar al sitio" data-magnetic>
+      <span class="enter__ring"></span>
+      <span class="enter__ring enter__ring--2"></span>
+      <img class="enter__logo" src="media/img/logo-kb.png" alt="" />
+      <span class="enter__label">ENTRAR</span>
+      <span class="enter__hint">clic para entrar · con sonido</span>
+    </button>
+  </div>
+
+  <div class="loader__marq" aria-hidden="true">
+    <div class="loader__marqrow">
+      FRESH&nbsp;CUTS&nbsp;&nbsp;✦&nbsp;&nbsp;WINNING&nbsp;SEASON&nbsp;&nbsp;✦&nbsp;&nbsp;TRUST&nbsp;THE&nbsp;PROCESS&nbsp;&nbsp;✦&nbsp;&nbsp;READY&nbsp;FOR&nbsp;CHANGE&nbsp;&nbsp;✦&nbsp;&nbsp;
+      FRESH&nbsp;CUTS&nbsp;&nbsp;✦&nbsp;&nbsp;WINNING&nbsp;SEASON&nbsp;&nbsp;✦&nbsp;&nbsp;TRUST&nbsp;THE&nbsp;PROCESS&nbsp;&nbsp;✦&nbsp;&nbsp;READY&nbsp;FOR&nbsp;CHANGE&nbsp;&nbsp;✦&nbsp;&nbsp;
+    </div>
   </div>
 </div>
 
