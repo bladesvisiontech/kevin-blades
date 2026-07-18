@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>KEVIN BLADES — Barbershop · Houston, TX</title>
+<meta name="description" content="Kevin Blades — barbería premium en Houston, TX. Failure is the first step to victory." />
+<link rel="icon" href="media/img/logo-kb.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Space+Grotesk:wght@400;500;700&family=UnifrakturCook:wght@700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+<!-- ================= PRELOADER ================= -->
+<div class="loader" id="loader">
+  <div class="loader__inner">
+    <img class="loader__logo" src="media/img/logo-kb.png" alt="Kevin Blades" />
+    <div class="loader__bar"><span id="loaderFill"></span></div>
+    <div class="loader__count"><span id="loaderNum">0</span><i>%</i></div>
+  </div>
+</div>
+
+<!-- ================= CUSTOM CURSOR ================= -->
+<div class="cursor" id="cursor"></div>
+<div class="cursor-dot" id="cursorDot"></div>
+
+<!-- ================= SCROLL PROGRESS ================= -->
+<div class="scroll-progress"><span id="scrollBar"></span></div>
+
+<!-- ================= NAV ================= -->
+<header class="nav" id="nav">
+  <a href="#hero" class="nav__brand" data-cursor="hover">
+    <img src="media/img/logo-kb.png" alt="KB" />
+    <span>KEVIN&nbsp;BLADES</span>
+  </a>
+  <nav class="nav__links">
+    <a href="#feed" data-cursor="hover">Feed</a>
+    <a href="#work" data-cursor="hover">Trabajo</a>
+    <a href="#visit" data-cursor="hover">Visítanos</a>
+  </nav>
+  <div class="nav__right">
+    <button class="audio-btn" id="audioBtn" data-cursor="hover" aria-label="Música">
+      <span class="eq"><i></i><i></i><i></i><i></i></span>
+      <span class="audio-btn__txt">SOUND</span>
+    </button>
+    <a class="nav__cta" href="https://instagram.com/blades_kevin" target="_blank" rel="noopener" data-cursor="hover">@blades_kevin</a>
+  </div>
+</header>
+
+<audio id="beat" loop preload="auto" src="media/audio/beat.mp3"></audio>
+
+<main id="scroll">
+
+  <!-- ================= HERO ================= -->
+  <section class="hero" id="hero">
+    <div class="hero__media">
+      <video class="hero__video" id="heroVideo" poster="media/poster/hero.jpg" muted loop playsinline autoplay preload="auto">
+        <source src="media/video/hero.mp4" type="video/mp4" />
+      </video>
+      <div class="hero__grain"></div>
+      <div class="hero__scrim"></div>
+    </div>
+
+    <div class="hero__content">
+      <div class="hero__kicker" data-reveal>
+        <span class="dot"></span> BARBERSHOP · HOUSTON, TX
+      </div>
+      <h1 class="hero__title">
+        <span class="line" data-hero-line>KEVIN</span>
+        <span class="line outline" data-hero-line>BLADES</span>
+      </h1>
+      <p class="hero__sub" data-reveal>
+        Cada corte es una declaración. Precisión, cultura y estilo
+        desde el sur de Houston.
+      </p>
+    </div>
+
+    <div class="hero__foot">
+      <div class="hero__quote" data-reveal>“ FAILURE IS THE FIRST STEP TO <em>VICTORY</em> ”</div>
+      <div class="hero__scrollcue" data-cursor="hidden">
+        <span>SCROLL</span>
+        <div class="hero__scrollcue-line"><i></i></div>
+      </div>
+    </div>
+
+    <div class="hero__side hero__side--l">EST. HOUSTON</div>
+    <div class="hero__side hero__side--r">6951 MCHARD RD</div>
+  </section>
+
+  <!-- ================= MARQUEE ================= -->
+  <section class="marquee-wrap" aria-hidden="true">
+    <div class="marquee" id="marquee">
+      <div class="marquee__row">
+        <span>FRESH CUTS</span><em>✦</em><span>READY FOR CHANGE</span><em>✦</em>
+        <span>WINNING SEASON</span><em>✦</em><span>TRUST THE PROCESS</span><em>✦</em>
+        <span>FRESH CUTS</span><em>✦</em><span>READY FOR CHANGE</span><em>✦</em>
+        <span>WINNING SEASON</span><em>✦</em><span>TRUST THE PROCESS</span><em>✦</em>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= MANIFESTO ================= -->
+  <section class="manifesto" id="about">
+    <div class="manifesto__bg" data-parallax="0.25">
+      <img src="media/img/fondo.jpg" alt="" />
+    </div>
+    <div class="manifesto__inner">
+      <p class="manifesto__label" data-reveal>01 — LA VISIÓN</p>
+      <h2 class="manifesto__text">
+        <span data-word>No</span> <span data-word>vendemos</span> <span data-word>cortes.</span>
+        <span data-word>Construimos</span> <span data-word>confianza,</span>
+        <span data-word>estilo</span> <span data-word>y</span>
+        <span data-word class="hl">victoria</span>
+        <span data-word>—</span> <span data-word>una</span>
+        <span data-word>silla</span> <span data-word>a</span> <span data-word>la</span> <span data-word>vez.</span>
+      </h2>
+    </div>
+  </section>
+
+  <!-- ================= FEED / REELS (horizontal) ================= -->
+  <section class="feed" id="feed">
+    <div class="feed__head">
+      <div>
+        <p class="sec-label" data-reveal>02 — EL FEED</p>
+        <h2 class="sec-title" data-reveal>@blades_kevin</h2>
+      </div>
+      <p class="feed__hint" data-reveal>Arrastra / desplázate →</p>
+    </div>
+
+    <div class="feed__track" id="feedTrack">
+      <article class="reel" data-reel><video muted loop playsinline preload="none" poster="media/poster/28oct_ok.jpg" data-src="media/video/28oct_ok.mp4"></video><div class="reel__meta"><span>READY FOR CHANGE</span><i>28 OCT</i></div></article>
+      <article class="reel" data-reel><video muted loop playsinline preload="none" poster="media/poster/7nov-youtube.jpg" data-src="media/video/7nov-youtube.mp4"></video><div class="reel__meta"><span>WINNING SEASON</span><i>07 NOV</i></div></article>
+      <article class="reel" data-reel><video muted loop playsinline preload="none" poster="media/poster/12nov-ok.jpg" data-src="media/video/12nov-ok.mp4"></video><div class="reel__meta"><span>TRUST</span><i>12 NOV</i></div></article>
+      <article class="reel" data-reel><video muted loop playsinline preload="none" poster="media/poster/5nov-eng.jpg" data-src="media/video/5nov-eng.mp4"></video><div class="reel__meta"><span>BLADES VISION</span><i>05 NOV</i></div></article>
+      <article class="reel" data-reel><video muted loop playsinline preload="none" poster="media/poster/11nov.jpg" data-src="media/video/11nov.mp4"></video><div class="reel__meta"><span>THE FADE</span><i>11 NOV</i></div></article>
+      <article class="reel" data-reel><video muted loop playsinline preload="none" poster="media/poster/23oct-usa.jpg" data-src="media/video/23oct-usa.mp4"></video><div class="reel__meta"><span>YOU ARE</span><i>23 OCT</i></div></article>
+      <article class="reel" data-reel><video muted loop playsinline preload="none" poster="media/poster/7novok.jpg" data-src="media/video/7novok.mp4"></video><div class="reel__meta"><span>VISIT US TODAY</span><i>07 NOV</i></div></article>
+      <article class="reel" data-reel><video muted loop playsinline preload="none" poster="media/poster/1oct.jpg" data-src="media/video/1oct.mp4"></video><div class="reel__meta"><span>DON’T WAIT</span><i>01 OCT</i></div></article>
+      <article class="reel" data-reel><video muted loop playsinline preload="none" poster="media/poster/2oct.jpg" data-src="media/video/2oct.mp4"></video><div class="reel__meta"><span>NO BAD DAYS</span><i>02 OCT</i></div></article>
+      <article class="reel" data-reel><video muted loop playsinline preload="none" poster="media/poster/27feb.jpg" data-src="media/video/27feb.mp4"></video><div class="reel__meta"><span>TENEMOS TODO LISTO</span><i>27 FEB</i></div></article>
+      <article class="reel" data-reel><video muted loop playsinline preload="none" poster="media/poster/5marzo.jpg" data-src="media/video/5marzo.mp4"></video><div class="reel__meta"><span>THE CRAFT</span><i>05 MAR</i></div></article>
+    </div>
+  </section>
+
+  <!-- ================= STATS ================= -->
+  <section class="stats">
+    <div class="stat" data-reveal><b class="stat__num" data-count="8">0</b><span>Años afilando</span></div>
+    <div class="stat" data-reveal><b class="stat__num" data-count="12000" data-suffix="+">0</b><span>Cortes realizados</span></div>
+    <div class="stat" data-reveal><b class="stat__num" data-count="100" data-suffix="%">0</b><span>Winning season</span></div>
+    <div class="stat" data-reveal><b class="stat__num" data-count="1">0</b><span>Culto: la cultura</span></div>
+  </section>
+
+  <!-- ================= WORK / GALLERY (parallax columns) ================= -->
+  <section class="work" id="work">
+    <div class="work__head">
+      <p class="sec-label" data-reveal>03 — EL TRABAJO</p>
+      <h2 class="sec-title" data-reveal>Detalle<br><span class="outline">& textura</span></h2>
+    </div>
+    <div class="gallery">
+      <div class="gallery__col" data-parallax="0.14">
+        <figure class="ph"><img src="media/img/kevin-pro.jpg" alt="Kevin trabajando" /></figure>
+        <figure class="ph"><img src="media/img/14junio2.jpg" alt="" /></figure>
+        <figure class="ph"><img src="media/img/3.jpg" alt="" /></figure>
+      </div>
+      <div class="gallery__col gallery__col--mid" data-parallax="-0.16">
+        <figure class="ph"><img src="media/img/barba-6.jpg" alt="" /></figure>
+        <figure class="ph"><img src="media/img/21oct.jpg" alt="" /></figure>
+        <figure class="ph"><img src="media/img/prueba.jpg" alt="" /></figure>
+      </div>
+      <div class="gallery__col" data-parallax="0.1">
+        <figure class="ph"><img src="media/img/21oct2.jpg" alt="" /></figure>
+        <figure class="ph"><img src="media/img/2-agosto-2.jpg" alt="" /></figure>
+        <figure class="ph"><img src="media/img/14junio6.jpg" alt="" /></figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= WIDE SHOWREEL ================= -->
+  <section class="showreel" id="showreel">
+    <div class="showreel__inner" data-parallax="0.12">
+      <video class="showreel__video" id="showVideo" muted loop playsinline preload="none"
+             poster="media/poster/reel-wide.jpg" data-src="media/video/reel-wide.mp4"></video>
+      <div class="showreel__scrim"></div>
+      <button class="showreel__play" id="showPlay" data-cursor="hover">
+        <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+        <span>Ver showreel</span>
+      </button>
+    </div>
+    <h2 class="showreel__title"><span class="outline">EL</span> ESPECTÁCULO</h2>
+  </section>
+
+  <!-- ================= VISIT / CTA ================= -->
+  <section class="visit" id="visit">
+    <div class="visit__grid">
+      <div class="visit__info">
+        <p class="sec-label" data-reveal>04 — VISÍTANOS</p>
+        <h2 class="visit__title" data-reveal>Reserva<br>tu silla.</h2>
+        <ul class="visit__list">
+          <li data-reveal><i>Dirección</i><b>6951 McHard Rd, Houston, TX 77053</b></li>
+          <li data-reveal><i>Horario</i><b>Lun–Sáb · 9:00 AM – 8:00 PM</b></li>
+          <li data-reveal><i>Instagram</i><b>@blades_kevin</b></li>
+        </ul>
+        <div class="visit__cta" data-reveal>
+          <a class="btn btn--green" href="https://instagram.com/blades_kevin" target="_blank" rel="noopener" data-cursor="hover" data-magnetic>
+            <span>Agendar por DM</span>
+          </a>
+          <a class="btn btn--ghost" href="https://maps.google.com/?q=6951+McHard+Rd+Houston+TX+77053" target="_blank" rel="noopener" data-cursor="hover" data-magnetic>
+            <span>Cómo llegar</span>
+          </a>
+        </div>
+      </div>
+      <div class="visit__card" data-parallax="0.08">
+        <img src="media/img/barberpole.png" class="visit__pole" alt="" />
+        <div class="visit__cardface">
+          <img src="media/img/logo-kb.png" alt="Kevin Blades" />
+          <p>WINNING<br>SEASON</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="footer">
+    <div class="footer__big" data-reveal>KEVIN&nbsp;BLADES</div>
+    <div class="footer__row">
+      <span>© 2026 Kevin Blades Barbershop</span>
+      <span>Houston, TX</span>
+      <a href="https://instagram.com/blades_kevin" target="_blank" rel="noopener" data-cursor="hover">@blades_kevin</a>
+    </div>
+  </footer>
+
+</main>
+
+<script src="js/vendor/gsap.min.js"></script>
+<script src="js/vendor/ScrollTrigger.min.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

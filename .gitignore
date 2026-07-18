@@ -1,0 +1,10 @@
+# Originales sin comprimir (pesados, +12GB) — solo referencia local
+assets/
+
+# Sistema
+.DS_Store
+tmp/
+*.log
+
+# Vercel
+.vercel
