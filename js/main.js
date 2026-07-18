@@ -5,6 +5,11 @@ gsap.registerPlugin(ScrollTrigger);
 const reduce = window.matchMedia('(prefers-reduced-motion:reduce)').matches;
 const isTouch = window.matchMedia('(hover:none)').matches;
 
+/* Mobile scroll fix: don't re-trigger ScrollTrigger.refresh() when the mobile
+   browser address bar shows/hides (that resize was causing the page to jump
+   back to a previous position). Also keep pinned sections desktop-only below. */
+ScrollTrigger.config({ ignoreMobileResize: true });
+
 /* ---------- PRELOADER / INTERACTIVE ENTRY GATE ---------- */
 (function loader(){
   const el   = document.getElementById('loader');
@@ -186,13 +191,57 @@ if(!reduce){
   });
 }
 
-/* ---------- FEED horizontal scroll ---------- */
-if(!reduce && !isTouch){
-  const track=document.getElementById('feedTrack');
-  const dist=()=>track.scrollWidth-innerWidth+64;
-  gsap.to(track,{x:()=>-dist(),ease:'none',
-    scrollTrigger:{trigger:'#feed',start:'top top',end:()=>'+='+dist(),
-      pin:true,scrub:1,invalidateOnRefresh:true,anticipatePin:1}});
+/* ---------- DESKTOP-ONLY pinned / heavy scroll effects (via matchMedia) ----------
+   All pinning lives here and only on >=768px, so phones never pin — that removes
+   the mobile "jump back" behaviour entirely. */
+function tunnelFallback(){const t=document.getElementById('tunnel');if(t)t.classList.add('no3d');}
+
+if(reduce){
+  tunnelFallback();
+}else{
+  const mm=gsap.matchMedia();
+
+  mm.add("(min-width:768px)",()=>{
+    /* FEED — horizontal scroll (pinned) */
+    const track=document.getElementById('feedTrack');
+    const dist=()=>Math.max(0,track.scrollWidth-innerWidth+64);
+    gsap.to(track,{x:()=>-dist(),ease:'none',
+      scrollTrigger:{trigger:'#feed',start:'top top',end:()=>'+='+dist(),
+        pin:true,scrub:1,invalidateOnRefresh:true,anticipatePin:1}});
+
+    /* CULTURE — giant type crossing images at different horizontal speeds */
+    gsap.utils.toArray('.ctype').forEach(l=>{
+      const s=parseFloat(l.dataset.xtype)||0;
+      gsap.fromTo(l,{x:()=>-s*innerWidth*0.10},{x:()=>s*innerWidth*0.10,ease:'none',
+        scrollTrigger:{trigger:'.culture',start:'top bottom',end:'bottom top',scrub:1,invalidateOnRefresh:true}});
+    });
+    gsap.utils.toArray('.ccase').forEach(c=>{
+      const d=parseFloat(c.dataset.ydepth)||0;
+      gsap.fromTo(c,{yPercent:-d*36},{yPercent:d*36,ease:'none',
+        scrollTrigger:{trigger:'.culture',start:'top bottom',end:'bottom top',scrub:true}});
+    });
+
+    /* TUNNEL / VORTEX — scroll flies "into the screen", doors open to the sides */
+    const frames=gsap.utils.toArray('#tunnel [data-frame]');
+    if(frames.length){
+      gsap.set(frames,{scale:0.14,opacity:0,transformOrigin:'50% 50%'});
+      const dur=()=>innerHeight*(frames.length*0.85+0.6);
+      const tl=gsap.timeline({scrollTrigger:{trigger:'#tunnel',start:'top top',
+        end:()=>'+='+dur(),pin:true,scrub:1,anticipatePin:1,invalidateOnRefresh:true}});
+      tl.to('.tunnel__door--l',{xPercent:-100,ease:'power2.inOut',duration:.6},0)
+        .to('.tunnel__door--r',{xPercent:100,ease:'power2.inOut',duration:.6},0)
+        .to('.tunnel__hud',{opacity:0,scale:1.5,ease:'power1.in',duration:.5},.2);
+      frames.forEach((f,i)=>{
+        const t=.5+i*.62, drift=(i%2?1:-1)*260;
+        tl.fromTo(f,{scale:.14,opacity:0,x:0,y:0},
+            {scale:1,opacity:1,ease:'power1.out',duration:.32},t)
+          .to(f,{scale:2.9,opacity:0,x:drift,y:(i%2?-60:60),ease:'power1.in',duration:.42},t+.32);
+      });
+      return ()=>gsap.set(frames,{clearProps:'all'});
+    }
+  });
+
+  mm.add("(max-width:767px)",tunnelFallback);
 }
 
 /* ---------- LAZY VIDEO load + play in view ---------- */
@@ -254,3 +303,4 @@ gsap.utils.toArray('.stat__num').forEach(el=>{
 
 /* refresh on load of everything */
 window.addEventListener('load',()=>ScrollTrigger.refresh());
+
