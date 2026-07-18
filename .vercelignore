@@ -1,0 +1,5 @@
+assets/
+tmp/
+.git
+*.log
+.DS_Store
