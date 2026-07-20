@@ -38,7 +38,7 @@
 
   <div class="loader__bottom">
     <div class="loader__meta">
-      <span id="loaderStep">CARGANDO</span>
+      <span id="loaderStep" data-en="LOADING">CARGANDO</span>
       <div class="loader__bar"><span id="loaderFill"></span></div>
     </div>
     <div class="loader__count"><span id="loaderNum">0</span><i>%</i></div>
@@ -50,8 +50,8 @@
       <span class="enter__ring"></span>
       <span class="enter__ring enter__ring--2"></span>
       <img class="enter__logo" src="media/img/logo-kb.png" alt="" />
-      <span class="enter__label">ENTRAR</span>
-      <span class="enter__hint">clic para entrar · música trap</span>
+      <span class="enter__label" data-en="ENTER">ENTRAR</span>
+      <span class="enter__hint" data-en="click to enter · trap music">clic para entrar · música trap</span>
     </button>
   </div>
 
@@ -78,10 +78,13 @@
   </a>
   <nav class="nav__links">
     <a href="#feed" data-cursor="hover">Feed</a>
-    <a href="#work" data-cursor="hover">Trabajo</a>
-    <a href="#visit" data-cursor="hover">Visítanos</a>
+    <a href="#work" data-cursor="hover" data-en="Work">Trabajo</a>
+    <a href="#visit" data-cursor="hover" data-en="Visit us">Visítanos</a>
   </nav>
   <div class="nav__right">
+    <button class="lang" id="langBtn" data-cursor="hover" aria-label="Cambiar idioma / Change language">
+      <span class="lang__opt is-on" data-lang="es">ES</span><span class="lang__sep">/</span><span class="lang__opt" data-lang="en">EN</span>
+    </button>
     <button class="audio-btn" id="audioBtn" data-cursor="hover" aria-label="Música">
       <span class="eq"><i></i><i></i><i></i><i></i></span>
       <span class="audio-btn__txt">SOUND</span>
@@ -112,7 +115,7 @@
         <span class="line" data-hero-line>KEVIN</span>
         <span class="line outline" data-hero-line>BLADES</span>
       </h1>
-      <p class="hero__sub" data-reveal>
+      <p class="hero__sub" data-reveal data-en="Every cut is a statement. Precision, culture and style from south Houston.">
         Cada corte es una declaración. Precisión, cultura y estilo
         desde el sur de Houston.
       </p>
@@ -148,7 +151,7 @@
       <img src="media/img/fondo.jpg" alt="" />
     </div>
     <div class="manifesto__inner">
-      <p class="manifesto__label" data-reveal>01 — LA VISIÓN</p>
+      <p class="manifesto__label" data-reveal data-en="01 — THE VISION">01 — LA VISIÓN</p>
       <h2 class="manifesto__text">
         <span data-word>Are</span> <span data-word>you</span> <span data-word>ready</span>
         <span data-word>for</span> <span data-word>a</span>
@@ -156,8 +159,8 @@
       </h2>
       <div class="manifesto__cta" data-reveal>
         <a class="btn btn--green" href="https://instagram.com/blades_kevin" target="_blank" rel="noopener"
-           data-cursor="hover" data-magnetic><span>Reservar cita</span></a>
-        <a class="btn btn--ghost" href="#visit" data-cursor="hover" data-magnetic><span>Ver horarios</span></a>
+           data-cursor="hover" data-magnetic><span data-en="Book now">Reservar cita</span></a>
+        <a class="btn btn--ghost" href="#visit" data-cursor="hover" data-magnetic><span data-en="See hours">Ver horarios</span></a>
       </div>
     </div>
   </section>
@@ -166,10 +169,10 @@
   <section class="feed" id="feed">
     <div class="feed__head">
       <div>
-        <p class="sec-label" data-reveal>02 — EL FEED</p>
+        <p class="sec-label" data-reveal data-en="02 — THE FEED">02 — EL FEED</p>
         <h2 class="sec-title" data-reveal>@blades_kevin</h2>
       </div>
-      <p class="feed__hint" data-reveal>Arrastra / desplázate →</p>
+      <p class="feed__hint" data-reveal data-en="Drag / scroll →">Arrastra / desplázate →</p>
     </div>
 
     <div class="feed__track" id="feedTrack">
@@ -182,17 +185,16 @@
       <article class="reel" data-reel><video muted loop playsinline preload="none" poster="media/poster/7novok.jpg" data-src="media/video/7novok.mp4"></video><div class="reel__meta"><span>VISIT US TODAY</span><i>07 NOV</i></div></article>
       <article class="reel" data-reel><video muted loop playsinline preload="none" poster="media/poster/1oct.jpg" data-src="media/video/1oct.mp4"></video><div class="reel__meta"><span>DON’T WAIT</span><i>01 OCT</i></div></article>
       <article class="reel" data-reel><video muted loop playsinline preload="none" poster="media/poster/2oct.jpg" data-src="media/video/2oct.mp4"></video><div class="reel__meta"><span>NO BAD DAYS</span><i>02 OCT</i></div></article>
-      <article class="reel" data-reel><video muted loop playsinline preload="none" poster="media/poster/27feb.jpg" data-src="media/video/27feb.mp4"></video><div class="reel__meta"><span>TENEMOS TODO LISTO</span><i>27 FEB</i></div></article>
+      <article class="reel" data-reel><video muted loop playsinline preload="none" poster="media/poster/27feb.jpg" data-src="media/video/27feb.mp4"></video><div class="reel__meta"><span data-en="WE'RE ALL SET">TENEMOS TODO LISTO</span><i>27 FEB</i></div></article>
       <article class="reel" data-reel><video muted loop playsinline preload="none" poster="media/poster/5marzo.jpg" data-src="media/video/5marzo.mp4"></video><div class="reel__meta"><span>THE CRAFT</span><i>05 MAR</i></div></article>
     </div>
   </section>
 
   <!-- ================= STATS ================= -->
   <section class="stats">
-    <div class="stat" data-reveal><b class="stat__num" data-count="15">0</b><span>Años afilando</span></div>
-    <div class="stat" data-reveal><b class="stat__num" data-count="12000" data-suffix="+">0</b><span>Cortes realizados</span></div>
+    <div class="stat" data-reveal><b class="stat__num" data-count="15">0</b><span data-en="Years sharpening">Años afilando</span></div>
+    <div class="stat" data-reveal><b class="stat__num" data-count="12000" data-suffix="+">0</b><span data-en="Haircuts done">Cortes realizados</span></div>
     <div class="stat" data-reveal><b class="stat__num" data-count="100" data-suffix="%">0</b><span>Winning season</span></div>
-    <div class="stat" data-reveal><b class="stat__num" data-count="1">0</b><span>Culto: la cultura</span></div>
   </section>
 
   <!-- ================= CULTURE / GIANT KINETIC TYPE ================= -->
@@ -204,21 +206,21 @@
     </div>
 
     <div class="culture__head">
-      <p class="sec-label" data-reveal>02.5 — ESTUDIO DE ESTILO</p>
+      <p class="sec-label" data-reveal data-en="02.5 — STYLE STUDY">02.5 — ESTUDIO DE ESTILO</p>
       <h2 class="culture__title" data-reveal>Changing the world<br><span class="outline">one haircut at a time</span></h2>
     </div>
 
     <div class="culture__cases">
-      <figure class="ccase" data-ydepth="0.18"><img src="media/img/sede-houston.jpg" alt="Sede Kevin Blades en Houston" loading="lazy" /><figcaption><b>Nuestra sede</b><i>Houston, TX</i></figcaption></figure>
-      <figure class="ccase ccase--tall" data-ydepth="-0.22"><img src="media/img/agendadisponible.jpg" alt="Agenda disponible" loading="lazy" /><figcaption><b>Agenda disponible</b><i>Reserva tu cita</i></figcaption></figure>
-      <figure class="ccase" data-ydepth="0.12"><video muted loop playsinline preload="none" poster="media/poster/20nov3.jpg" data-src="media/video/20nov3.mp4"></video><figcaption><b>En el sillón</b><i>El proceso en vivo</i></figcaption></figure>
+      <figure class="ccase" data-ydepth="0.18"><img src="media/img/sede-houston.jpg" alt="Sede Kevin Blades en Houston" loading="lazy" /><figcaption><b data-en="Our shop">Nuestra sede</b><i>Houston, TX</i></figcaption></figure>
+      <figure class="ccase ccase--tall" data-ydepth="-0.22"><img src="media/img/agendadisponible.jpg" alt="Agenda disponible" loading="lazy" /><figcaption><b data-en="Booking open">Agenda disponible</b><i data-en="Book your appointment">Reserva tu cita</i></figcaption></figure>
+      <figure class="ccase" data-ydepth="0.12"><video muted loop playsinline preload="none" poster="media/poster/20nov3.jpg" data-src="media/video/20nov3.mp4"></video><figcaption><b data-en="In the chair">En el sillón</b><i data-en="The process live">El proceso en vivo</i></figcaption></figure>
     </div>
   </section>
 
   <!-- ================= WORK / GALLERY (parallax columns) ================= -->
   <section class="work" id="work">
     <div class="work__head">
-      <p class="sec-label" data-reveal>03 — EL TRABAJO</p>
+      <p class="sec-label" data-reveal data-en="03 — THE WORK">03 — EL TRABAJO</p>
       <h2 class="sec-title" data-reveal>Blades<br><span class="outline">Vision</span></h2>
     </div>
     <div class="gallery">
@@ -248,10 +250,10 @@
       <div class="showreel__scrim"></div>
       <button class="showreel__play" id="showPlay" data-cursor="hover">
         <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-        <span>Ver showreel</span>
+        <span data-en="Watch showreel">Ver showreel</span>
       </button>
     </div>
-    <h2 class="showreel__title"><span class="outline">EL</span> ESPECTÁCULO</h2>
+    <h2 class="showreel__title" data-en='<span class="outline">THE</span> SHOW'><span class="outline">EL</span> ESPECTÁCULO</h2>
   </section>
 
   <!-- ================= TUNNEL / VORTEX ================= -->
@@ -263,29 +265,29 @@
 
       <div class="tframe" data-frame>
         <video muted loop playsinline preload="none" poster="media/poster/t-20nov2.jpg" data-src="media/video/t-20nov2.mp4"></video>
-        <span class="tframe__tag">01 / EL ESTUDIO</span>
+        <span class="tframe__tag" data-en="01 / THE STUDIO">01 / EL ESTUDIO</span>
       </div>
       <div class="tframe" data-frame>
         <video muted loop playsinline preload="none" poster="media/poster/t-20nov.jpg" data-src="media/video/t-20nov.mp4"></video>
-        <span class="tframe__tag">02 / LA SILLA</span>
+        <span class="tframe__tag" data-en="02 / THE CHAIR">02 / LA SILLA</span>
       </div>
       <div class="tframe" data-frame>
         <video muted loop playsinline preload="none" poster="media/poster/t-20nov4.jpg" data-src="media/video/t-20nov4.mp4"></video>
-        <span class="tframe__tag">03 / EL RITUAL</span>
+        <span class="tframe__tag" data-en="03 / THE RITUAL">03 / EL RITUAL</span>
       </div>
       <div class="tframe" data-frame>
         <video muted loop playsinline preload="none" poster="media/poster/t-2oct.jpg" data-src="media/video/t-2oct.mp4"></video>
-        <span class="tframe__tag">04 / EL CORTE</span>
+        <span class="tframe__tag" data-en="04 / THE CUT">04 / EL CORTE</span>
       </div>
       <div class="tframe" data-frame>
         <video muted loop playsinline preload="none" poster="media/poster/t-3oct2.jpg" data-src="media/video/t-3oct2.mp4"></video>
-        <span class="tframe__tag">05 / EL DETALLE</span>
+        <span class="tframe__tag" data-en="05 / THE DETAIL">05 / EL DETALLE</span>
       </div>
 
       <div class="tunnel__hud">
-        <span class="tunnel__kicker">RECORRIDO INMERSIVO</span>
-        <h2 class="tunnel__title" id="tunnelTitle">ENTRA<br><span class="outline">AL ESTUDIO</span></h2>
-        <span class="tunnel__hint">Sigue bajando para avanzar ↓</span>
+        <span class="tunnel__kicker" data-en="IMMERSIVE JOURNEY">RECORRIDO INMERSIVO</span>
+        <h2 class="tunnel__title" id="tunnelTitle" data-en='ENTER<br><span class="outline">THE STUDIO</span>'>ENTRA<br><span class="outline">AL ESTUDIO</span></h2>
+        <span class="tunnel__hint" data-en="Keep scrolling to move forward ↓">Sigue bajando para avanzar ↓</span>
       </div>
     </div>
   </section>
@@ -294,19 +296,19 @@
   <section class="visit" id="visit">
     <div class="visit__grid">
       <div class="visit__info">
-        <p class="sec-label" data-reveal>04 — VISÍTANOS</p>
+        <p class="sec-label" data-reveal data-en="04 — VISIT US">04 — VISÍTANOS</p>
         <h2 class="visit__title" data-reveal>Book your<br>experience</h2>
         <ul class="visit__list">
-          <li data-reveal><i>Dirección</i><b>6951 McHard Rd, Houston, TX 77053</b></li>
-          <li data-reveal><i>Horario</i><b>Lun–Sáb · 9:00 AM – 8:00 PM</b></li>
+          <li data-reveal><i data-en="Address">Dirección</i><b>6951 McHard Rd, Houston, TX 77053</b></li>
+          <li data-reveal><i data-en="Hours">Horario</i><b data-en="Mon–Sat · 9:00 AM – 8:00 PM">Lun–Sáb · 9:00 AM – 8:00 PM</b></li>
           <li data-reveal><i>Instagram</i><b>@blades_kevin</b></li>
         </ul>
         <div class="visit__cta" data-reveal>
           <a class="btn btn--green" href="https://instagram.com/blades_kevin" target="_blank" rel="noopener" data-cursor="hover" data-magnetic>
-            <span>Agendar por DM</span>
+            <span data-en="Book via DM">Agendar por DM</span>
           </a>
           <a class="btn btn--ghost" href="https://maps.google.com/?q=6951+McHard+Rd+Houston+TX+77053" target="_blank" rel="noopener" data-cursor="hover" data-magnetic>
-            <span>Cómo llegar</span>
+            <span data-en="Get directions">Cómo llegar</span>
           </a>
         </div>
       </div>

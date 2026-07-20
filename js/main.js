@@ -10,6 +10,32 @@ const isTouch = window.matchMedia('(hover:none)').matches;
    back to a previous position). Also keep pinned sections desktop-only below. */
 ScrollTrigger.config({ ignoreMobileResize: true });
 
+/* ---------- I18N — cambio de idioma ES / EN ----------
+   Cada texto traducible lleva data-en="..." en el HTML; el contenido original
+   del HTML es el español. Guardamos la preferencia en localStorage. */
+const I18N = (function(){
+  const KEY='kb-lang';
+  const nodes=Array.from(document.querySelectorAll('[data-en]'));
+  nodes.forEach(n=>n.setAttribute('data-es', n.innerHTML));   // guarda el español original
+  let lang = localStorage.getItem(KEY) || 'es';
+
+  function apply(l){
+    lang = (l==='en') ? 'en' : 'es';
+    nodes.forEach(n=>{ n.innerHTML = n.getAttribute(lang==='en' ? 'data-en' : 'data-es'); });
+    document.documentElement.lang = lang;
+    localStorage.setItem(KEY, lang);
+    document.querySelectorAll('.lang__opt').forEach(o=>
+      o.classList.toggle('is-on', o.dataset.lang===lang));
+    window.__lang = lang;
+    document.dispatchEvent(new CustomEvent('langchange',{detail:lang}));
+  }
+
+  const btn=document.getElementById('langBtn');
+  if(btn) btn.addEventListener('click', ()=>apply(lang==='es'?'en':'es'));
+  apply(lang);
+  return { apply, get lang(){ return lang; } };
+})();
+
 /* ---------- PRELOADER / INTERACTIVE ENTRY GATE ---------- */
 (function loader(){
   const el   = document.getElementById('loader');
@@ -23,20 +49,30 @@ ScrollTrigger.config({ ignoreMobileResize: true });
   const enterWrap = document.getElementById('enterWrap');
   document.body.classList.add('loading');
 
-  const phases = [
-    [0,  'Iniciando la sesión…'],
-    [22, 'Afilando las <b>cuchillas</b>…'],
-    [46, 'Preparando la <b>silla</b>…'],
-    [70, 'Cargando el <b>feed</b>…'],
-    [90, 'Casi listo. <b>Winning season</b>.']
-  ];
-  let phaseIdx = -1;
+  const PHASES = {
+    es:[[0,'Iniciando la sesión…'],[22,'Afilando las <b>cuchillas</b>…'],[46,'Preparando la <b>silla</b>…'],
+        [70,'Cargando el <b>feed</b>…'],[90,'Casi listo. <b>Winning season</b>.']],
+    en:[[0,'Starting the session…'],[22,'Sharpening the <b>blades</b>…'],[46,'Preparing the <b>chair</b>…'],
+        [70,'Loading the <b>feed</b>…'],[90,'Almost there. <b>Winning season</b>.']]
+  };
+  const READY = { es:{step:'LISTO', msg:'Tu silla te espera.'},
+                  en:{step:'READY', msg:'Your chair is waiting.'} };
+  const L = ()=> (window.__lang==='en' ? 'en' : 'es');
+
+  let phaseIdx = -1, lastP = 0;
   function setPhase(p){
-    let i=0; for(let k=0;k<phases.length;k++){if(p>=phases[k][0])i=k;}
-    if(i!==phaseIdx){phaseIdx=i;status.innerHTML=phases[i][1];}
+    lastP=p; const ph=PHASES[L()];
+    let i=0; for(let k=0;k<ph.length;k++){if(p>=ph[k][0])i=k;}
+    if(i!==phaseIdx){phaseIdx=i;status.innerHTML=ph[i][1];}
   }
 
   let p=0, entered=false, ready=false;
+
+  // si cambia el idioma mientras carga, re-render de los textos del loader
+  document.addEventListener('langchange',()=>{
+    if(ready){ step.textContent=READY[L()].step; status.innerHTML=READY[L()].msg; }
+    else { phaseIdx=-1; setPhase(lastP); }
+  });
   const tick=setInterval(()=>{
     p += Math.random()*7 + 2;
     if(p>=100){p=100;clearInterval(tick);}
@@ -58,8 +94,8 @@ ScrollTrigger.config({ ignoreMobileResize: true });
 
   function openGate(){
     if(ready)return; ready=true;
-    step.textContent='LISTO';
-    status.innerHTML='Tu silla te espera.';
+    step.textContent=READY[L()].step;
+    status.innerHTML=READY[L()].msg;
     setTimeout(()=>{
       el.classList.add('gate');
       enterWrap.classList.add('show');
