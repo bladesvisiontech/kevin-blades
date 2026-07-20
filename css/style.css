@@ -312,7 +312,6 @@ body.loading{overflow:hidden;height:100vh}
 .visit__card{position:relative;aspect-ratio:3/4;border-radius:16px;
   background:linear-gradient(160deg,#111 0%,#050505 100%);border:1px solid var(--line);
   display:flex;align-items:center;justify-content:center;overflow:hidden}
-.visit__pole{position:absolute;left:16px;top:0;height:100%;width:30px;object-fit:cover;opacity:.9;border-radius:20px}
 .visit__cardface{text-align:center}
 .visit__cardface img{width:clamp(120px,16vw,190px);margin:0 auto 18px;filter:drop-shadow(0 0 30px rgba(141,198,63,.5))}
 .visit__cardface p{font-family:var(--font-display);font-size:clamp(22px,3vw,34px);line-height:1;letter-spacing:2px;color:var(--green)}
