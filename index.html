@@ -3,13 +3,95 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>KEVIN BLADES — Barbershop · Houston, TX</title>
-<meta name="description" content="Kevin Blades — barbería premium en Houston, TX. Failure is the first step to victory." />
+<!-- ============================================================
+     SEO / SOCIAL
+     Dominio canónico del sitio: https://kevin.bladesvision.com
+     ^ Si algún día cambia el dominio, es lo único que hay que
+       reemplazar en este bloque (canonical, og:url, og:image y
+       los @id del JSON-LD de abajo).
+     ============================================================ -->
+<title>Kevin Blades — Barber &amp; Owner of Blades Vision | Houston, TX</title>
+<meta name="description" content="Kevin Blades (@blades_kevin), master barber and owner of Blades Vision Barbershop in Houston, TX. Precision fades, beard design &amp; styling. Book your appointment." />
+<link rel="canonical" href="https://kevin.bladesvision.com/" />
+<meta name="author" content="Kevin Blades" />
+<meta name="robots" content="index, follow, max-image-preview:large" />
+<meta name="theme-color" content="#8dc63f" />
+
+<!-- Open Graph (Instagram, WhatsApp, Facebook) -->
+<meta property="og:type" content="profile" />
+<meta property="og:site_name" content="Blades Vision Barbershop" />
+<meta property="og:title" content="Kevin Blades — Barber &amp; Owner of Blades Vision | Houston, TX" />
+<meta property="og:description" content="Master barber and owner of Blades Vision Barbershop in Houston, TX. Precision fades, beard design &amp; styling. Book your appointment." />
+<meta property="og:url" content="https://kevin.bladesvision.com/" />
+<meta property="og:image" content="https://kevin.bladesvision.com/media/img/og-cover.jpg" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="Kevin Blades — Blades Vision Barbershop" />
+<meta property="og:locale" content="es_ES" />
+<meta property="og:locale:alternate" content="en_US" />
+
+<!-- Twitter / X -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Kevin Blades — Barber &amp; Owner of Blades Vision | Houston, TX" />
+<meta name="twitter:description" content="Master barber and owner of Blades Vision Barbershop in Houston, TX. Precision fades, beard design &amp; styling." />
+<meta name="twitter:image" content="https://kevin.bladesvision.com/media/img/og-cover.jpg" />
+
 <link rel="icon" href="media/img/logo-kb.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Space+Grotesk:wght@400;500;700&family=UnifrakturCook:wght@700&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="css/style.css" />
+
+<!-- Datos estructurados: Kevin (Persona) es barbero y dueño del negocio.
+     Solo se declaran datos verificados (dirección, teléfono e Instagram reales).
+     Los horarios y la ficha local viven en www.bladesvision.com, para no
+     competir con las señales locales del negocio principal. -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": "https://kevin.bladesvision.com/#kevin",
+      "name": "Kevin Blades",
+      "alternateName": "blades_kevin",
+      "jobTitle": "Barber & Owner",
+      "description": "Master barber and owner of Blades Vision Barbershop in Houston, TX. Specializes in precision fades, beard design and styling.",
+      "url": "https://kevin.bladesvision.com/",
+      "image": "https://kevin.bladesvision.com/media/img/og-cover.jpg",
+      "knowsLanguage": ["es", "en"],
+      "sameAs": ["https://www.instagram.com/blades_kevin"],
+      "worksFor": { "@id": "https://www.bladesvision.com/#business" }
+    },
+    {
+      "@type": "HairSalon",
+      "@id": "https://www.bladesvision.com/#business",
+      "name": "Blades Vision Barbershop",
+      "url": "https://www.bladesvision.com/",
+      "telephone": "+1-832-971-0434",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "6951 McHard Rd",
+        "addressLocality": "Houston",
+        "addressRegion": "TX",
+        "postalCode": "77053",
+        "addressCountry": "US"
+      },
+      "areaServed": { "@type": "City", "name": "Houston" },
+      "employee": { "@id": "https://kevin.bladesvision.com/#kevin" }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://kevin.bladesvision.com/#website",
+      "url": "https://kevin.bladesvision.com/",
+      "name": "Kevin Blades — Barber & Owner of Blades Vision",
+      "inLanguage": ["es", "en"],
+      "about": { "@id": "https://kevin.bladesvision.com/#kevin" },
+      "publisher": { "@id": "https://www.bladesvision.com/#business" }
+    }
+  ]
+}
+</script>
 </head>
 <body>
 
@@ -324,7 +406,9 @@
   <footer class="footer">
     <div class="footer__big" data-reveal>KEVIN&nbsp;BLADES</div>
     <div class="footer__row">
-      <span>© 2026 Kevin Blades Barbershop</span>
+      <span>© 2026 Kevin Blades</span>
+      <a href="https://www.bladesvision.com" target="_blank" rel="noopener" data-cursor="hover"
+         data-en="Part of Blades Vision Barbershop">Parte de Blades Vision Barbershop</a>
       <span>Houston, TX</span>
       <a href="https://instagram.com/blades_kevin" target="_blank" rel="noopener" data-cursor="hover">@blades_kevin</a>
     </div>
