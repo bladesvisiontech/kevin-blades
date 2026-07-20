@@ -225,6 +225,7 @@ body.loading{overflow:hidden;height:100vh}
   font-size:clamp(34px,6vw,90px);line-height:1.02;letter-spacing:-.01em}
 .manifesto__text [data-word]{display:inline-block;opacity:.12;transition:opacity .1s}
 .manifesto__text .hl{color:var(--green)}
+.manifesto__cta{display:flex;gap:16px;flex-wrap:wrap;margin-top:clamp(34px,5vw,60px)}
 
 /* ============ FEED (horizontal scroll) ============ */
 .feed{padding:clamp(70px,10vh,130px) 0 clamp(80px,12vh,150px)}
